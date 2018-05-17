@@ -30,6 +30,9 @@ cat /kafka/config/server.properties.template | sed \
   -e "s|{{ZOOKEEPER_SESSION_TIMEOUT_MS}}|${ZOOKEEPER_SESSION_TIMEOUT_MS:-10000}|g" \
   -e "s|{{KAFKA_MESSAGE_MAX_BYTES}}|${KAFKA_MESSAGE_MAX_BYTES:-1000012}|g" \
   -e "s|{{KAFKA_REPLICA_FETCH_MAX_BYTES}}|${KAFKA_REPLICA_FETCH_MAX_BYTES:-1048576}|g" \
+  -e "s|{{KAFKA_LOG_DIR}}|${KAFKA_LOG_DIR:-/data}|g" \
+  -e "s|{{KAFKA_LOG_RETENTION_MS}}|${KAFKA_LOG_RETENTION_MS:-180000}|g" \
+  -e "s|{{KAFKA_LOG_RETENTION_BYTES}}|${KAFKA_LOG_RETENTION_BYTES:-1000000000}|g" \
    > /kafka/config/server.properties
 
 # Kafka's built-in start scripts set the first three system properties here, but

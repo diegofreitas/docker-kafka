@@ -41,8 +41,8 @@ advertised.port={{KAFKA_ADVERTISED_PORT}}
 ############################# Log Basics #############################
 
 # The directory under which to store log files
-log.dir=/data
-log.dirs=/data
+log.dir={{KAFKA_LOG_DIR}}
+log.dirs={{KAFKA_LOG_DIR}}
 
 # The number of logical partitions per topic per server. More partitions allow greater parallelism
 # for consumption, but also mean more files.
@@ -57,6 +57,13 @@ num.partitions={{KAFKA_NUM_PARTITIONS}}
 
 # The minimum age of a log file to be eligible for deletion
 log.retention.hours={{KAFKA_LOG_RETENTION_HOURS}}
+
+#The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used
+log.retention.ms={{KAFKA_LOG_RETENTION_MS}}
+
+# A size-based retention policy for logs. Segments are pruned from the log as long as the remaining
+# segments don't drop below log.retention.bytes. Functions independently of log.retention.hours.
+log.retention.bytes={{KAFKA_LOG_RETENTION_BYTES}}
 
 ############################# Zookeeper #############################
 
